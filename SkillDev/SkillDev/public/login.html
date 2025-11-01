@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="styles/universal.css" />
+    <link rel="stylesheet" href="styles/colors.css" />
+    <link rel="stylesheet" href="styles/navbar.css" />
+    <link rel="stylesheet" href="styles/footer.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+    <title>Skilldev | No.1 Learning Platform</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="dark">
+    <header>
+      <nav style="position: fixed; top: 0; width: 100%;">
+        <div class="nav-bar">
+          <li class="logo">
+            <a href="#">
+              <img id="topLogo" src="SkillDev_logo.png" alt="CoderClas Main Logo" />
+            </a>
+          </li>
+
+          <div style="display: flex;">
+            <div class="wrapper">
+              <input type="checkbox" id="hide_checkbox" checked>
+              <label for="hide_checkbox" class="toggle">
+                <span class="toggle-button">
+                  <span class="crater crater-1"></span>
+                  <span class="crater crater-2"></span>
+                  <span class="crater crater-3"></span>   
+                  <span class="crater crater-4"></span>
+                  <span class="crater crater-5"></span>
+                  <span class="crater crater-6"></span>
+                  <span class="crater crater-7"></span>
+                </span>
+                <span class="star star-1"></span>
+                <span class="star star-2"></span>
+                <span class="star star-3"></span>
+                <span class="star star-4"></span>
+                <span class="star star-5"></span>
+                <span class="star star-6"></span>
+                <span class="star star-7"></span>
+                <span class="star star-8"></span>
+              </label>
+            </div>
+
+
+          <input type="checkbox" id="check" />
+          <span class="menu font-sans">
+            <li>
+              <a class="text-white text-center" href="#courses">Courses</a>
+            </li>
+            <li><a class="text-white text-center" href="pages/contact us/contact.html">Contact Us</a></li>
+            <li>
+              <a class="text-white text-center" href="pages/about us/about.html">About Us</a>
+            </li>
+            <li>
+              <a href="pages/login/login.html">
+              <button class="btn-design text-bold">Login</button></a>
+            </li>
+            <label for="check" class="close-menu">
+              <i class="text-white fas fa-times"></i>
+            </label>
+          </span>
+
+        </div>
+
+          <label for="check" class="open-menu">
+            <i class="text-white fas fa-bars"></i>
+          </label>
+        </div>
+      </nav>
+    </header>
+    <div class="body-container">
+      <div class="container" id="container">
+          <div class="form-container sign-up-container">
+              <form id="signUpForm">
+                  <h1>Create Account</h1>
+                  <input type="text" id="signupName" placeholder="Name" required />
+                  <input type="email" id="signupEmail" placeholder="Email" required />
+                  <input type="password" id="signupPassword" placeholder="Password" required />
+                  <div class="btn-grad" id="signUpBtn">Sign Up</div>
+              </form>
+          </div>
+          <div class="form-container sign-in-container">
+              <form id="signInForm">
+                  <h1>Sign In</h1>
+                  <input type="email" id="signinEmail" placeholder="Email" required />
+                  <input type="password" id="signinPassword" placeholder="Password" required />
+                  <a href="#">Forgot your password?</a>
+                  <div class="btn-grad" id="signInBtn">Sign In</div>
+              </form>
+          </div>
+
+          <div class="overlay-container">
+              <div class="overlay">
+                  <div class="overlay-panel overlay-left">
+                      <h1>Welcome Back!</h1>
+                      <p>Start from where you left</p>
+                      <div class="btn-grad" id="signIn">Sign In</div>
+                  </div>
+                  <div class="overlay-panel overlay-right">
+                      <h1>Hello, Buddy!</h1>
+                      <p>Join Us on a new adventure</p>
+                      <div class="btn-grad" id="signUp">Sign Up</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div id="messageContainer" style="display: none;"></div>
+
+</div>
+  <script type="text/javascript" src="login.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

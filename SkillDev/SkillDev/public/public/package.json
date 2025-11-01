@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "course-selling-website-master": "file:",
+    "express": "^4.21.1"
+  },
+  "name": "course-selling-website-master",
+  "description": "This repository contains the source code for a course selling website, a comprehensive online platform designed to facilitate the sale and distribution of educational courses. Built using HTML, CSS, and JavaScript, this website offers a user-friendly interface with interactive features and a seamless browsing experience.",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

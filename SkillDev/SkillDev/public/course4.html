@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles/universal.css" />
+    <link rel="stylesheet" href="styles/colors.css" />
+    <link rel="stylesheet" href="styles/navbar.css" />
+    <link rel="stylesheet" href="styles/footer.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+    <title>SkillDev | No.1 Learning Platform</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <style>
+        /* Navbar styling for fixed position */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #333;
+            z-index: 1000;
+            height: 60px; /* Navbar height */
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        /* Logo adjustments to fit within navbar */
+        #topLogo {
+            height: 40px; /* Adjusted height to fit within navbar */
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        /* Adjust content-wrapper to avoid overlap */
+        .content-wrapper {
+            display: flex;
+            margin-top: 80px; /* Matches navbar height + some spacing */
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Left Column (Course content) */
+        .course-column {
+            width: 40%;
+        }
+
+        /* Right Column (Introduction and Mindmap) */
+        .intro-column {
+            width: 60%;
+            background: #222;
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* Card and Thumbnail styling */
+        .course-row {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .card {
+            width: 100%;
+            background: #333;
+            color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .course-thumbnail {
+            width: 100%;
+            height: auto;
+        }
+
+        .card-level {
+            padding: 8px;
+            background-color: #ff9800;
+            color: white;
+            text-align: center;
+        }
+
+        .course-title {
+            padding: 15px;
+            font-size: 1.25em;
+            color: #ff9800;
+            text-align: center;
+        }
+
+        .line {
+            width: 80%;
+            height: 2px;
+            background-color: #666;
+            margin: 10px auto;
+        }
+
+        .course-price-section {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .final-price {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        /* Increased width of sections */
+.intro-section,
+.mindmap-section {
+    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient background */
+    border-radius: 15px; /* Rounded corners */
+    padding: 20px; /* Padding for content */
+    margin-bottom: 20px; /* Space between sections */
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease; /* Smooth transitions */
+    width: 100%; /* Full width of the container */
+    max-width: 600px; /* Maximum width */
+    animation: fadeIn 1s ease-in-out; /* Fade-in effect on load */
+    position: relative; /* Position relative for child elements */
+}
+
+/* Add hover effects with enhanced animations */
+.intro-section:hover,
+.mindmap-section:hover {
+    transform: scale(1.05) rotate(1deg); /* Scale and slightly rotate on hover */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6); /* Enhanced shadow effect on hover */
+    background: linear-gradient(135deg, #2575fc, #6a11cb); /* Inverted gradient on hover */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Move up from below */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* End position */
+    }
+}
+
+/* Adding a pulse animation to sections */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Add slide-in effect from the left */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Add slide-in effect from the right */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Apply the slide-in animations */
+.intro-section {
+    animation: slideInLeft 1s ease forwards; /* Slide in from the left */
+}
+
+.mindmap-section {
+    animation: slideInRight 1s ease forwards; /* Slide in from the right */
+}
+
+/* Adding a glowing effect to sections */
+.intro-section::after,
+.mindmap-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 15px; /* Match the section border radius */
+    background: rgba(0, 0, 0, 0.2); /* Semi-transparent overlay */
+    filter: blur(10px); /* Blur effect for glow */
+    opacity: 0; /* Start hidden */
+    transition: opacity 0.4s ease; /* Transition for opacity */
+}
+
+.intro-section:hover::after,
+.mindmap-section:hover::after {
+    opacity: 1; /* Show glow on hover */
+}
+
+/* Optional: Add transition to headings */
+.intro-section h2,
+.mindmap-section h2 {
+    color: #fff; /* Heading color */
+    margin-bottom: 10px; /* Space below heading */
+    transition: color 0.4s ease, transform 0.4s ease;
+}
+
+/* Animation for headings */
+.intro-section h2,
+.mindmap-section h2 {
+    animation: moveUp 1.5s ease forwards; /* Move up animation */
+}
+
+/* Keyframes for headings move-up animation */
+@keyframes moveUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Change heading color on hover */
+.intro-section:hover h2,
+.mindmap-section:hover h2 {
+    color: #ffcc00; /* Change heading color on hover */
+}
+
+/* Paragraph text color */
+.intro-section p,
+.mindmap-section p {
+    color: #f0f0f0; /* Text color */
+    transition: color 0.4s ease;
+}
+
+/* Change text color on hover */
+.intro-section:hover p,
+.mindmap-section:hover p {
+    color: #fff; /* Brighten text color on hover */
+}
+
+/* Adding a shimmer effect to sections */
+.intro-section:hover,
+.mindmap-section:hover {
+    animation: shimmer 2s infinite; /* Shimmer animation on hover */
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Bounce animation for headings */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Apply bounce effect to headings */
+.intro-section h2,
+.mindmap-section h2 {
+    animation: bounce 2s infinite; /* Continuous bounce effect */
+}
+
+/* Rotate animation */
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(3deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+/* Apply rotation effect to sections on hover */
+
+
+
+
+    </style>
+</head>
+<body class="dark">
+    <header>
+        <!-- Navbar code -->
+        <nav>
+            <div class="nav-bar">
+                <ul class="logo">
+                    <li>
+                        <a href="#">
+                            <img id="topLogo" src="SkillDev_logo.png" alt="SkillDev Main Logo" />
+                        </a>
+                    </li>
+                </ul>
+
+                <div style="display: flex;">
+                    <div class="wrapper">
+                        <input type="checkbox" id="hide_checkbox" checked>
+                        <label for="hide_checkbox" class="toggle">
+                            <span class="toggle-button">
+                                <span class="crater crater-1"></span>
+                                <span class="crater crater-2"></span>
+                                <span class="crater crater-3"></span>
+                                <span class="crater crater-4"></span>
+                                <span class="crater crater-5"></span>
+                                <span class="crater crater-6"></span>
+                                <span class="crater crater-7"></span>
+                            </span>
+                            <span class="star star-1"></span>
+                            <span class="star star-2"></span>
+                            <span class="star star-3"></span>
+                            <span class="star star-4"></span>
+                            <span class="star star-5"></span>
+                            <span class="star star-6"></span>
+                            <span class="star star-7"></span>
+                            <span class="star star-8"></span>
+                        </label>
+                    </div>
+                    <input type="checkbox" id="check" />
+                    <ul class="menu font-sans">
+                        <li><a class="text-white text-center" href="#courses">Courses</a></li>
+                        <li><a class="text-white text-center" href="pages/contact us/contact.html">Contact Us</a></li>
+                        <li><a class="text-white text-center" href="pages/about us/about.html">About Us</a></li>
+                        <li>
+                            <a href="login.html">
+                                <button class="btn-design text-bold">Login</button>
+                            </a>
+                        </li>
+                        <label for="check" class="close-menu">
+                            <i class="text-white fas fa-times"></i>
+                        </label>
+                    </ul>
+                </div>
+                <label for="check" class="open-menu">
+                    <i class="text-white fas fa-bars"></i>
+                </label>
+            </div>
+        </nav>
+    </header>
+
+    <div class="content-wrapper">
+        <!-- Left Side: Course Content -->
+        <div class="course-column">
+            <div class="course-row">
+                <a href="#">
+                    <div class="card">
+                        <img class="course-thumbnail" src="java.jpg" alt="Course Thumbnail" />
+                        <p class="card-level text-bold">BEGINNER TO ADVANCED 🔥🔥🔥</p>
+                        <h3 class="course-title">java Development Master Course <i>@Supreme</i> Batch</h3>
+                        <div class="line"></div>
+                        <div class="course-price-section text-bold">
+                            <p class="final-price">Free</p>
+                            <p class="prev-price">Free</p>
+                            <p class="discount-percent"><a href="https://www.youtube.com/watch?v=ntLJmHOJ0ME&list=PLu0W_9lII9agS67Uits0UnJyrYiXhDS6q">Enjoy</a></p>
+                            <button class="discount-percent"><a href="java mindmap.png">Mindmap</a></button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Right Side: Introduction and Mindmap -->
+           <!-- Right Side: Introduction and Mindmap -->
+           <div class="intro-column">
+            <div class="intro-section">
+                <h2>Introduction</h2>
+                <p>Welcome to the java Development Master Course! This course is designed to take you from a beginner to an advanced level, covering essential concepts, practical applications, and industry insights.</p>
+            </div>
+        
+            <div class="mindmap-section">
+                <h2 style="cursor: pointer;">Mindmap</h2>
+                <div id="mindmap-container">
+                    <!-- Mindmap image can be displayed here if needed -->
+                    <img src="java mindmap.png" alt="Python Mindmap" id="mindmap-image" width="300" height="300">
+                </div>
+                <!-- Download button -->
+               
+                
+                
+                </a>
+            </div>
+        </div>
+        
+        
+        
+         
+        <style>
+            /* Basic styling for the mindmap section */
+            
+
+
+
+        </style>
+         <script src="../script.js"></script>
+</body>
+</html>
