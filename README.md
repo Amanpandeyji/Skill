@@ -87,11 +87,3 @@ The objective of SkillDev is to provide students with:
 - More Learning Categories
 
 ---
-
-- LinkedIn: https://www.linkedin.com/in/aman-pandey-846845253/
-
----
-
-## ⭐ Support
-
-If you like this project, give it a ⭐ on GitHub.
